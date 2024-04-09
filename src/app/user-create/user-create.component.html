@@ -1,0 +1,190 @@
+@if (user$ | async; as user) {
+<h1>Edit User {{ (user$ | async)?.name }}</h1>
+} @else {
+<h1>Create User</h1>
+}
+<form [formGroup]="form" class="user-form">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      id="name"
+      type="text"
+      placeholder="Your Name..."
+      formControlName="name"
+    />
+
+    <div
+      class="error"
+      *ngIf="
+        form.get('name')?.hasError('required') && form.get('name')?.touched
+      "
+    >
+      First Name is required
+    </div>
+    <div
+      class="error"
+      *ngIf="
+        form.get('name')?.hasError('minlength') && form.get('name')?.touched
+      "
+    >
+      First Name must be min 3 characters
+    </div>
+    <div
+      class="error"
+      *ngIf="
+        form.get('name')?.hasError('maxlength') && form.get('name')?.touched
+      "
+    >
+      First Name must be max 16 characters
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input
+      id="lastName"
+      type="text"
+      placeholder="Your LastName..."
+      formControlName="lastName"
+    />
+
+    <div
+      class="error"
+      *ngIf="
+        form.get('lastName')?.hasError('required') &&
+        form.get('lastName')?.touched
+      "
+    >
+      Last Name is required
+    </div>
+    <div
+      class="error"
+      *ngIf="
+        form.get('lastName')?.hasError('minlength') &&
+        form.get('lastName')?.touched
+      "
+    >
+      Last Name must be min 3 characters
+    </div>
+    <div
+      class="error"
+      *ngIf="
+        form.get('lastName')?.hasError('maxlength') &&
+        form.get('lastName')?.touched
+      "
+    >
+      Last Name must be max 16 characters
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="birthDate">Birth Date</label>
+    <input
+      id="birthDate"
+      type="date"
+      placeholder="Your Birth Date..."
+      formControlName="birthDate"
+    />
+
+    <div
+      class="error"
+      *ngIf="
+        form.get('birthDate')?.hasError('required') &&
+        form.get('birthDate')?.touched
+      "
+    >
+      Birth Date is required
+    </div>
+    <div
+      class="error"
+      *ngIf="
+        form.get('birthDate')?.hasError('age') && form.get('birthDate')?.touched
+      "
+    >
+      You are not Adult
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="number">Phone Number</label>
+    <input
+      id="number"
+      type="tel"
+      placeholder="Your Phone Number..."
+      formControlName="number"
+    />
+  </div>
+
+  <div formGroupName="address" class="address-group">
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        id="city"
+        type="text"
+        placeholder="Your City..."
+        formControlName="city"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input
+        id="street"
+        type="text"
+        placeholder="Your Street..."
+        formControlName="street"
+      />
+    </div>
+  </div>
+
+  <button (click)="addSkill()" class="btn">Add Skill</button>
+  <div
+    *ngFor="let control of skills.controls; let i = index"
+    formArrayName="skills"
+    class="skill-group"
+  >
+    <div [formGroupName]="i" class="skill-container">
+      <label for="skill{{ i }}">Skill {{ i + 1 }} :</label>
+      <input type="text" id="skill{{ i }}" formControlName="skill" />
+      <button (click)="removeSkill(i)" class="btn2">Remove</button>
+    </div>
+  </div>
+
+  <button (click)="addExperience()" class="btn">Add Experience</button>
+  <div formArrayName="experiences" class="experience-group">
+    <div
+      *ngFor="let control of experiences.controls; let i = index"
+      class="experience-container"
+    >
+      <div [formGroupName]="i" class="form-group">
+        <label for="place">Place</label>
+        <input
+          id="place"
+          type="text"
+          placeholder="Place..."
+          formControlName="place"
+        />
+
+        <label for="position">Position</label>
+        <input
+          id="position"
+          type="text"
+          placeholder="Your Position..."
+          formControlName="position"
+        />
+
+        <label for="years">Years</label>
+        <input
+          id="years"
+          type="number"
+          placeholder="Years..."
+          formControlName="years"
+        />
+
+        <button (click)="removeExperience(i)" class="btn2">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <button (click)="onSubmit()" class="btn">Submit</button>
+</form>

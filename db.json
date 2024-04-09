@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "id": "56",
+      "name": "Brad",
+      "number": "3242221432",
+      "lastName": "Pit",
+      "birthDate": "1991-02-22",
+      "skills": [
+        {
+          "skill": "Acting"
+        }
+      ],
+      "experiences": [
+        {
+          "place": "Hollywood",
+          "position": "Actor",
+          "years": 7
+        }
+      ],
+      "address": {
+        "city": "LA",
+        "street": "Rustaveli"
+      }
+    }
+  ]
+}

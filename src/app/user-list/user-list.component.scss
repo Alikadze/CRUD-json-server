@@ -1,0 +1,55 @@
+.button-div {
+  display: flex;
+  justify-content: end;
+  height: 40px;
+
+  button {
+    background-color: rgb(13, 175, 175);
+    margin-bottom: 10px;
+  }
+}
+
+.header {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Alternate row background color */
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+td:last-child {
+  text-align: center; /* Aligning the content of the last column to the center */
+}
+
+button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+button:nth-child(2) {
+  background-color: #f44336; /* Red for the second button */
+}
+
+button:nth-child(2):hover {
+  background-color: #da190b; /* Darker red for hover */
+}
